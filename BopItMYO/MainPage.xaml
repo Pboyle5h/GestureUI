@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <TextBlock x:Name="tblUpdates" Text="Updates" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="10, 20, 0, 0" />
+        <TextBlock x:Name="expGetures" Text="Gestures" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="20, 30, 0, 0" />
+        <Button x:Name="btnMyo" Content="Find Myo" HorizontalAlignment="Center" Margin="0, 0, 0, 25"
+                VerticalAlignment="Bottom" Click="btnMyo_Click"/>
     </Grid>
 </Page>
