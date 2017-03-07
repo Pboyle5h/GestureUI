@@ -6,6 +6,8 @@ using MyoSharp.Device;
 using MyoSharp.Exceptions;
 using MyoSharp.Poses;
 using System.Collections.Generic;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 //using BopItMYO.Classes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -28,6 +30,7 @@ namespace BopItMYO
                 "Fist",
                 "WaveOut",
                 "FingersSpread",
+                "DoubleTap",
         };
 
         public MainPage()
@@ -134,6 +137,7 @@ namespace BopItMYO
             Pose curr = e.Pose;
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
+
                 tblUpdates.Text = curr.ToString();
                 switch (curr)
                 {
@@ -183,8 +187,54 @@ namespace BopItMYO
                 int randomNumber = rnd.Next(0, Gestures.Count);
                 expGetures.Text = Gestures[randomNumber];
 
-                
-           
+            
+
+
+            switch (Gestures[randomNumber])
+            {
+                case "WaveIn":
+
+                    
+                    ImageBrush brush1 = new ImageBrush();
+                    brush1.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/wave-left.png", UriKind.RelativeOrAbsolute));
+                    gestureImages.Source = brush1.ImageSource;
+
+
+                    break;
+                case "Fist":
+                    ImageBrush brush2 = new ImageBrush();
+                    brush2.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/make-fist.png", UriKind.RelativeOrAbsolute));
+                    gestureImages.Source = brush2.ImageSource;
+                  
+
+                    break;
+                case "WaveOut":
+                    ImageBrush brush3 = new ImageBrush();
+                    brush3.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/wave-right.png", UriKind.RelativeOrAbsolute));
+                    gestureImages.Source = brush3.ImageSource;
+
+                    break;
+                case "FingersSpread":
+                    ImageBrush brush4 = new ImageBrush();
+                    brush4.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/spread-fingers.png", UriKind.RelativeOrAbsolute));
+                    gestureImages.Source = brush4.ImageSource;
+
+                    break;
+                case "DoubleTap":
+                    ImageBrush brush5 = new ImageBrush();
+                    brush5.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/double-tap.png", UriKind.RelativeOrAbsolute));
+                    gestureImages.Source = brush5.ImageSource;
+
+                    break;
+               
+                default:
+                    break;
+            }
+
+
+
+
+
         }
 
     }

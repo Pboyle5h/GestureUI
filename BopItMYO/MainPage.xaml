@@ -6,11 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="tblUpdates" Text="Updates" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="10, 20, 0, 0" />
-        <TextBlock x:Name="expGetures" Text="Gestures" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="20, 30, 0, 0" />
+        <TextBlock x:Name="tblUpdates" Text="Updates" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="114,303,0,32" />
+        <TextBlock x:Name="expGetures" Text="Gestures" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="448,309,0,25" />
         <Button x:Name="btnMyo" Content="Find Myo" HorizontalAlignment="Center" Margin="0, 0, 0, 25"
                 VerticalAlignment="Bottom" Click="btnMyo_Click"/>
+        <Image x:Name="gestureImages" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top" Width="391" Margin="114,10,0,0"/>
     </Grid>
+
+
 </Page>
