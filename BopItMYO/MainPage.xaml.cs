@@ -8,6 +8,7 @@ using MyoSharp.Poses;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Threading.Tasks;
 //using BopItMYO.Classes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -31,6 +32,14 @@ namespace BopItMYO
                 "WaveOut",
                 "FingersSpread",
                 "DoubleTap",
+        };
+        List<string> randomImage = new List<string>()
+            {
+                "ms-appx:/Assets/wave-left.png",
+                "ms-appx:/Assets/make-fist.png",
+                "ms-appx:/Assets/wave-right.png",
+                "ms-appx:/Assets/spread-fingers.png",
+                "ms-appx:/Assets/double-tap.png",
         };
 
         public MainPage()
@@ -146,11 +155,19 @@ namespace BopItMYO
                         {
                             randomGesture();
                         }
+                        else if (tblUpdates.Text == "WaveIn" && expGetures.Text != "WaveIn")
+                        {
+                            wrongImage();
+                        }
                         break;
                     case Pose.Fist:
                         if (tblUpdates.Text == expGetures.Text)
                         {
                             randomGesture();
+                        }
+                        else if (tblUpdates.Text == "Fist" && expGetures.Text != "Fist")
+                        {
+                            wrongImage();
                         }
                         break;
                     case Pose.WaveOut:
@@ -158,18 +175,30 @@ namespace BopItMYO
                         {
                             randomGesture();
                         }
+                        else if (tblUpdates.Text == "WaveOut" && expGetures.Text != "WaveOut")
+                        {
+                            wrongImage();
+                        }
                         break;
                     case Pose.FingersSpread:
                         if (tblUpdates.Text == expGetures.Text)
                         {
                             randomGesture();
+                        }else if (tblUpdates.Text == "FingersSpread" && expGetures.Text != "FingersSpread")
+                        {
+                            wrongImage();
                         }
+
                         break;
                     case Pose.DoubleTap:
                         if (tblUpdates.Text == expGetures.Text)
                         {
                             randomGesture();
+                        }else if (tblUpdates.Text =="DoubleTap" && expGetures.Text != "DoubleTap")
+                        {
+                            wrongImage();
                         }
+                        
                         break;
                     case Pose.Unknown:
                         break;
@@ -230,9 +259,20 @@ namespace BopItMYO
                 default:
                     break;
             }
-
-
-
+        }
+        public async void wrongImage()
+        {
+            ImageBrush brush6 = new ImageBrush();
+            brush6.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/x.png", UriKind.RelativeOrAbsolute));
+            gestureImages.Source = brush6.ImageSource;
+            await Task.Delay(300);
+            int randomNumber = rnd.Next(0, Gestures.Count);
+            expGetures.Text = Gestures[randomNumber];
+            int randomImages = rnd.Next(0, randomImage.Count);
+            ImageBrush brush7 = new ImageBrush();
+            brush7.ImageSource = new BitmapImage(new Uri(randomImage[randomImages], UriKind.RelativeOrAbsolute));
+            gestureImages.Source = brush7.ImageSource;
+           
 
 
         }
