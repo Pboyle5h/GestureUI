@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="BopItMYO.MainMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BopItMYO"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Height="1282.925" Width="779.701">
+
+    <Grid Background="#4b494b" Margin="172,102,-172.333,-102">
+        <Button x:Name="button2"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,572,0,0" Click="button2_Click" Height="90" Width="252">
+            <Button.Background>
+                <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875693853921.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button3"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,728,0,0" Click="button3_Click" Height="102" Width="252">
+            <Button.Background>
+                <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875745769433.png"/>
+            </Button.Background>
+        </Button>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="262" Margin="233,227,0,0" VerticalAlignment="Top" Width="252" Source="Assets/cooltext174875521684584.png"/>
+        <Button x:Name="easyBtn"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,465,0,0" Height="102" Width="252">
+            <Button.Background>
+                <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875593797347.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Page>

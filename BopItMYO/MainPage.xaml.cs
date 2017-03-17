@@ -25,6 +25,8 @@ namespace BopItMYO
         IHub _myoHub;
         IHub _myoHub1;
         public Random rnd = new Random();
+        public int score;
+        public int lives=3;
         List<string> Gestures = new List<string>()
             {
                 "WaveIn",
@@ -262,16 +264,25 @@ namespace BopItMYO
         }
         public async void wrongImage()
         {
-            ImageBrush brush6 = new ImageBrush();
-            brush6.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/x.png", UriKind.RelativeOrAbsolute));
-            gestureImages.Source = brush6.ImageSource;
-            await Task.Delay(300);
-            int randomNumber = rnd.Next(0, Gestures.Count);
-            expGetures.Text = Gestures[randomNumber];
-            int randomImages = rnd.Next(0, randomImage.Count);
-            ImageBrush brush7 = new ImageBrush();
-            brush7.ImageSource = new BitmapImage(new Uri(randomImage[randomImages], UriKind.RelativeOrAbsolute));
-            gestureImages.Source = brush7.ImageSource;
+            if (lives>0)
+            {
+                ImageBrush brush6 = new ImageBrush();
+                brush6.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/x.png", UriKind.RelativeOrAbsolute));
+                gestureImages.Source = brush6.ImageSource;
+                await Task.Delay(300);
+                int randomNumber = rnd.Next(0, Gestures.Count);
+                expGetures.Text = Gestures[randomNumber];
+                int randomImages = rnd.Next(0, randomImage.Count);
+                ImageBrush brush7 = new ImageBrush();
+                brush7.ImageSource = new BitmapImage(new Uri(randomImage[randomImages], UriKind.RelativeOrAbsolute));
+                gestureImages.Source = brush7.ImageSource;
+                lives--;
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(Leaderboard), null);
+            }
+            
            
 
 
