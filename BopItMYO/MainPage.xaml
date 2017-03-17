@@ -12,6 +12,7 @@
         <Button x:Name="btnMyo" Content="Find Myo" HorizontalAlignment="Center" Margin="0, 0, 0, 25"
                 VerticalAlignment="Bottom" Click="btnMyo_Click"/>
         <Image x:Name="gestureImages" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top" Width="391" Margin="114,10,0,0"/>
+        <TextBox x:Name="countdown" HorizontalAlignment="Left" Margin="510,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="127"/>
     </Grid>
 
 

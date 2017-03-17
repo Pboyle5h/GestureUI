@@ -24,6 +24,8 @@ namespace BopItMYO
         IChannel _myoChannel1;
         IHub _myoHub;
         IHub _myoHub1;
+        public int time = 31;
+        public DispatcherTimer Timer;
         public Random rnd = new Random();
         public int score;
         public int lives=3;
@@ -217,8 +219,13 @@ namespace BopItMYO
 
                 int randomNumber = rnd.Next(0, Gestures.Count);
                 expGetures.Text = Gestures[randomNumber];
+                //creates and starts the timer 
+                Timer = new DispatcherTimer();
+                Timer.Interval = new TimeSpan(0, 0, 1);
+                Timer.Tick += countdownTimer;
+                Timer.Start();
 
-            
+
 
 
             switch (Gestures[randomNumber])
@@ -262,6 +269,31 @@ namespace BopItMYO
                     break;
             }
         }
+        private void countdownTimer(object sender, object e)
+        {
+
+            if (time > 0)
+            {
+                if (time <= 10)
+                {
+                    time--;
+                    countdown.Text = string.Format("{1}", time / 60, time % 60);
+                }
+                else
+                {
+                    time--;
+                    countdown.Text = string.Format("{1}", time / 60, time % 60);
+                }
+            }
+            else
+            {
+                Timer.Stop();
+
+            }
+
+
+        }
+
         public async void wrongImage()
         {
             if (lives>0)
