@@ -7,23 +7,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Height="1282.925" Width="779.701">
 
-    <Grid Background="#4b494b" Margin="172,102,-172.333,-102">
-        <Button x:Name="button2"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,572,0,0" Click="button2_Click" Height="90" Width="252">
-            <Button.Background>
-                <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875693853921.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="button3"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,728,0,0" Click="button3_Click" Height="102" Width="252">
-            <Button.Background>
-                <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875745769433.png"/>
-            </Button.Background>
-        </Button>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="262" Margin="233,227,0,0" VerticalAlignment="Top" Width="252" Source="Assets/cooltext174875521684584.png"/>
-        <Button x:Name="easyBtn"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,465,0,0" Height="102" Width="252">
-            <Button.Background>
-                <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875593797347.png"/>
-            </Button.Background>
-        </Button>
-
+    
+    <Grid Background="#4b494b">
+    <Button x:Name="button2"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,262,0,0" Click="button2_Click" Height="90" Width="252">
+        <Button.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875693853921.png"/>
+        </Button.Background>
+    </Button>
+    <Button x:Name="button3"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,357,0,0" Click="button3_Click" Height="102" Width="252">
+        <Button.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875745769433.png"/>
+        </Button.Background>
+    </Button>
+    <Image x:Name="image" HorizontalAlignment="Left" Height="262" Margin="233,0,0,0" VerticalAlignment="Top" Width="252" Source="Assets/cooltext174875521684584.png"/>
+    <Button x:Name="easyBtn"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233,178,0,0" Height="102" Width="252" Click="easyBtn_Click">
+        <Button.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/cooltext174875593797347.png"/>
+        </Button.Background>
+    </Button>
     </Grid>
 </Page>

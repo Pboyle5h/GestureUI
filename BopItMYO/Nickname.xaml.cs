@@ -20,29 +20,17 @@ namespace BopItMYO
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainMenu : Page
+    public sealed partial class Nickname : Page
     {
-        public MainMenu()
+        public Nickname()
         {
             this.InitializeComponent();
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void nicknameSubmit_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void button3_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void easyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (App.user==" ")
-            {
-                this.Frame.Navigate(typeof(Nickname), null);
-            }else
+           App.user=nicknameTB.Text;
             this.Frame.Navigate(typeof(MainPage), null);
         }
     }
