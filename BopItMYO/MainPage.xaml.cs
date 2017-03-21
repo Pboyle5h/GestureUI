@@ -372,7 +372,7 @@ namespace BopItMYO
                 response.Dispose();
                 this.Frame.Navigate(typeof(Leaderboard), null);
             }
-            catch (WebException ex)
+            catch (WebException )
             {
                 //if connection failed, output message to user
                 //errorMessage.Visibility = Visibility.Visible;
