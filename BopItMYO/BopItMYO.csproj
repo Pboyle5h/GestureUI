@@ -116,6 +116,9 @@
     <None Include="BopItMYO_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\1.png" />
+    <Content Include="Assets\2.png" />
+    <Content Include="Assets\3.png" />
     <Content Include="Assets\cooltext174875521684584.png" />
     <Content Include="Assets\cooltext174875593797347.png" />
     <Content Include="Assets\cooltext174875693853921.png" />

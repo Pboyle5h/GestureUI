@@ -53,8 +53,9 @@ namespace BopItMYO
 
             this.InitializeComponent();
             MyoSetup();
-            randomGesture();
-     
+            gameCountdown();
+
+
 
         }
         
@@ -349,6 +350,24 @@ namespace BopItMYO
 
         }
 
+        private async void gameCountdown()
+        {
+            await Task.Delay(1000);
+            ImageBrush brush3 = new ImageBrush();
+            brush3.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/3.png", UriKind.RelativeOrAbsolute));
+            gestureImages.Source = brush3.ImageSource;
+            await Task.Delay(1000);
+            ImageBrush brush4 = new ImageBrush();
+            brush4.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/2.png", UriKind.RelativeOrAbsolute));
+            gestureImages.Source = brush4.ImageSource;
+            await Task.Delay(1000);
+            ImageBrush brush5= new ImageBrush();
+            brush5.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/1.png", UriKind.RelativeOrAbsolute));
+            gestureImages.Source = brush5.ImageSource;
+            await Task.Delay(1000);
+            randomGesture();
+
+        }
         private async void submitScore()
         {
 

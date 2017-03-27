@@ -59,8 +59,8 @@ namespace BopItMYO
                     if (rt != null)
                     {
                         //appends the rota on to the screen for the employee 
-                        leaderboardTB.Text += "Nickname: " + rt.Nickname +
-                                         "\r\nScore: " + rt.score;
+                        nicknameTB.Text += "\n" + rt.Nickname;
+                        scoreTB.Text += "\n" + rt.score;
                         //passes the list into a global list to be transfered on button click
                     }
 
@@ -69,7 +69,7 @@ namespace BopItMYO
 
                 response.Dispose();
             }
-            catch (WebException ex)
+            catch (WebException )
             {
                 //if connection failed, output message to user
                // errorMessage.Visibility = Visibility.Visible;
