@@ -16,7 +16,11 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>BopItMYO_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>BopItMYO_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>99B10AB1366C02F2019A3A7741D66CAF17911BD2</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -89,6 +93,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="BopItMYO_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -122,14 +127,23 @@
     <Content Include="Assets\cooltext174875521684584.png" />
     <Content Include="Assets\cooltext174875593797347.png" />
     <Content Include="Assets\cooltext174875693853921.png" />
-    <Content Include="Assets\cooltext174875745769433.png" />
     <Content Include="Assets\double-tap.png" />
+    <Content Include="Assets\KeyPressed.png" />
+    <Content Include="Assets\Leaderboard.png" />
+    <Content Include="Assets\Lives.png" />
     <Content Include="Assets\make-fist.png" />
+    <Content Include="Assets\Myo.png" />
+    <Content Include="Assets\Nickname.png" />
+    <Content Include="Assets\PleaseSelect.png" />
+    <Content Include="Assets\Score.png" />
     <Content Include="Assets\spread-fingers.png" />
+    <Content Include="Assets\StartGame.png" />
+    <Content Include="Assets\TimeLeft.png" />
     <Content Include="Assets\wave-left.png" />
     <Content Include="Assets\wave-right.png" />
     <Content Include="Assets\x.png" />
     <Content Include="MyoSharp.dll" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

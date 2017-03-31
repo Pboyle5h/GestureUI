@@ -7,9 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="nicknameTB" HorizontalAlignment="Left" Margin="530,277,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="65" Width="353"/>
-        <Button x:Name="nicknameSubmit" Content="Submit" HorizontalAlignment="Left" Margin="96,277,0,0" VerticalAlignment="Top" Height="65" Width="429" Click="nicknameSubmit_Click"/>
+    <Grid Background="#4b494b">
+        <Image x:Name="NicknameImg" HorizontalAlignment="Left" Height="229" Margin="276,0,0,0" VerticalAlignment="Top" Width="807" Source="Assets/Nickname.png"/>
+
+        <TextBox x:Name="nicknameTB" HorizontalAlignment="Left" Margin="454,229,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="65" Width="429"/>
+        <Button x:Name="nicknameSubmit" Content="Submit" HorizontalAlignment="Left" Margin="454,334,0,0" VerticalAlignment="Top" Height="65" Width="429" Click="nicknameSubmit_Click"/>
 
     </Grid>
 </Page>

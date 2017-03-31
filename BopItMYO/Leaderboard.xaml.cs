@@ -48,14 +48,15 @@ namespace BopItMYO
                 StreamReader objReader = new StreamReader(dataStream);
 
                 dynamic javaResponse = (objReader.ReadToEnd());
-                var list = JsonConvert.DeserializeObject<List<LeaderboardBody>>(javaResponse);
-
+                List<LeaderboardBody> list = JsonConvert.DeserializeObject<List<LeaderboardBody>>(javaResponse);
+    
+                var SortedList = list.OrderByDescending(x=> Int32.Parse(x.score)).ToList();
                 //loops through the list elements
-                foreach (LeaderboardBody rt in list)
+                foreach (LeaderboardBody rt in SortedList)
                 {
                     //if the list element is not equal to null it enters the if statement
                     //This makes sure that only accurate data is shown.
-
+                    
                     if (rt != null)
                     {
                         //appends the rota on to the screen for the employee 
@@ -76,6 +77,18 @@ namespace BopItMYO
                // errorMessage.Text = "Failed to connect to server\nPlease check your internet connection";
 
             }
+        }
+
+        private void nickname_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainMenu), null);
+        }
+
+        
+
+        private void image_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainMenu), null);
         }
     }
 }

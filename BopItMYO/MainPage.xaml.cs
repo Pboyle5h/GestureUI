@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using Windows.UI.Core;
 //using BopItMYO.Classes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -23,9 +24,7 @@ namespace BopItMYO
     public sealed partial class MainPage : Page
     {
         IChannel _myoChannel;
-        IChannel _myoChannel1;
         IHub _myoHub;
-        IHub _myoHub1;
         public int time = 31;
         public DispatcherTimer Timer;
         public Random rnd = new Random();
@@ -37,7 +36,6 @@ namespace BopItMYO
                 "Fist",
                 "WaveOut",
                 "FingersSpread",
-                "DoubleTap",
         };
         List<string> randomImage = new List<string>()
             {
@@ -45,20 +43,26 @@ namespace BopItMYO
                 "ms-appx:/Assets/make-fist.png",
                 "ms-appx:/Assets/wave-right.png",
                 "ms-appx:/Assets/spread-fingers.png",
-                "ms-appx:/Assets/double-tap.png",
         };
 
         public MainPage()
         {
 
             this.InitializeComponent();
-            MyoSetup();
-            gameCountdown();
-
-
+            // creates and starts the timer
+            Timer = new DispatcherTimer();
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            Timer.Tick += countdownTimer;
+            liveTB.Text = lives.ToString();
+            Timer.Start();
+          
+                MyoSetup();
+                gameCountdown();
+            
 
         }
         
+
         #region Myo Setup Methods
         private void MyoSetup()
         { // communication, device, exceptions, poses
@@ -69,25 +73,14 @@ namespace BopItMYO
             // create the hub with the channel
             _myoHub = MyoSharp.Device.Hub.Create(_myoChannel);
             // create the event handlers for connect and disconnect
+            _myoHub.MyoDisconnected -= _myoHub_MyoDisconnected;
             _myoHub.MyoConnected += _myoHub_MyoConnected;
-            _myoHub.MyoDisconnected += _myoHub_MyoDisconnected;
+     
+
 
             // start listening 
             _myoChannel.StartListening();
 
-
-            // create the channel
-            _myoChannel1 = Channel.Create(ChannelDriver.Create(ChannelBridge.Create(),
-                                    MyoErrorHandlerDriver.Create(MyoErrorHandlerBridge.Create())));
-
-            // create the hub with the channel
-            _myoHub1 = MyoSharp.Device.Hub.Create(_myoChannel1);
-            // create the event handlers for connect and disconnect
-            _myoHub1.MyoConnected += _myoHub_MyoConnected;
-            _myoHub1.MyoDisconnected += _myoHub_MyoDisconnected;
-
-            // start listening 
-            _myoChannel1.StartListening();
 
         }
 
@@ -95,7 +88,7 @@ namespace BopItMYO
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
-                tblUpdates.Text = tblUpdates.Text + System.Environment.NewLine +
+                tblUpdates.Text = expGetures.Text + System.Environment.NewLine +
                                     "Myo disconnected";
             });
             _myoHub.MyoConnected -= _myoHub_MyoConnected;
@@ -131,6 +124,7 @@ namespace BopItMYO
         }
         #endregion
         #region Pose related methods
+        
 
         private async void Sequence_PoseSequenceCompleted(object sender, PoseSequenceEventArgs e)
         {
@@ -149,28 +143,30 @@ namespace BopItMYO
 
         }
 
-
+        
         private async void Myo_PoseChanged(object sender, PoseEventArgs e)
         {
             Pose curr = e.Pose;
+         
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
             {
 
 
+               
                 switch (curr)
                 {
                     case Pose.WaveIn:
                         tblUpdates.Text = "WaveIn";
                         if (tblUpdates.Text == expGetures.Text)
                         {
-                            tblUpdates.Text = "";
+                           
                             score++;
                             await Task.Delay(300);
                             randomGesture();
                         }
                         else if (tblUpdates.Text == "WaveIn" && expGetures.Text != "WaveIn")
                         {
-                            tblUpdates.Text = "";
+                      
                             await Task.Delay(300);
                             wrongImage();
                         }
@@ -179,14 +175,14 @@ namespace BopItMYO
                         tblUpdates.Text = "Fist";
                         if (tblUpdates.Text == expGetures.Text)
                         {
-                            tblUpdates.Text = "";
+                          
                             score++;
                             await Task.Delay(300);
                             randomGesture();
                         }
                         else if (tblUpdates.Text == "Fist" && expGetures.Text != "Fist")
                         {
-                            tblUpdates.Text = "";
+                        
                             await Task.Delay(300);
                             wrongImage();
                         }
@@ -195,7 +191,7 @@ namespace BopItMYO
                         tblUpdates.Text = "WaveOut";
                         if (tblUpdates.Text == expGetures.Text)
                         {
-                            tblUpdates.Text = "";
+                           
                             score++;
                             await Task.Delay(300);
                             randomGesture();
@@ -203,7 +199,7 @@ namespace BopItMYO
                         }
                         else if (tblUpdates.Text == "WaveOut" && expGetures.Text != "WaveOut")
                         {
-                            tblUpdates.Text = "";
+                           
                             await Task.Delay(300);
                             wrongImage();
                         }
@@ -212,37 +208,20 @@ namespace BopItMYO
                         tblUpdates.Text = "FingersSpread";
                         if (tblUpdates.Text == expGetures.Text)
                         {
-                            tblUpdates.Text = "";
+                  
                             score++;
                             await Task.Delay(300);
                             randomGesture();
                         }
                         else if (tblUpdates.Text == "FingersSpread" && expGetures.Text != "FingersSpread")
                         {
-                            tblUpdates.Text = "";
+            
                             await Task.Delay(300);
                             wrongImage();
                         }
 
                         break;
-                    case Pose.DoubleTap:
-                        tblUpdates.Text = "DoubleTap";
-                        if (tblUpdates.Text == expGetures.Text)
-                        {
-                            tblUpdates.Text = "";
-                            score++;
-                            await Task.Delay(300);
-                            randomGesture();
-                        }
-                        else if (tblUpdates.Text == "DoubleTap" && expGetures.Text != "DoubleTap")
-                        {
-                            score++;
-                            tblUpdates.Text = "";
-                            await Task.Delay(300);
-                            wrongImage();
-                        }
-
-                        break;
+                    
                     case Pose.Unknown:
                         break;
                     default:
@@ -252,17 +231,14 @@ namespace BopItMYO
         }
         #endregion
 
-        public void randomGesture()
+        
+        private void randomGesture()
         {         
                 int randomNumber = rnd.Next(0, Gestures.Count);
                 expGetures.Text = Gestures[randomNumber];
-           // creates and starts the timer
-                Timer = new DispatcherTimer();
-                Timer.Interval = new TimeSpan(0, 0, 1);
-                Timer.Tick += countdownTimer;
-                Timer.Start();
+         
 
-            test.Text = score.ToString();
+            scoreTB.Text = score.ToString();
 
 
             switch (Gestures[randomNumber])
@@ -295,20 +271,14 @@ namespace BopItMYO
                     gestureImages.Source = brush4.ImageSource;
 
                     break;
-                case "DoubleTap":
-                    ImageBrush brush5 = new ImageBrush();
-                    brush5.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/double-tap.png", UriKind.RelativeOrAbsolute));
-                    gestureImages.Source = brush5.ImageSource;
-
-                    break;
                
                 default:
                     break;
             }
         }
-        private void countdownTimer(object sender, object e)
+        private async void countdownTimer(object sender, object e)
         {
-
+            await Task.Delay(3000);
             if (time > 0)
             {
                 if (time <= 10)
@@ -325,6 +295,8 @@ namespace BopItMYO
             else
             {
                 Timer.Stop();
+                this.Frame.Navigate(typeof(Leaderboard));
+
 
             }
 
@@ -340,9 +312,14 @@ namespace BopItMYO
                 await Task.Delay(300);
                 randomGesture();
                 lives--;
+                liveTB.Text = lives.ToString();
+
 
             if (lives==0)
             {
+                ImageBrush brush7 = new ImageBrush();
+                brush7.ImageSource = new BitmapImage(new Uri("ms-appx:/Assets/x.png", UriKind.RelativeOrAbsolute));
+                gestureImages.Source = brush7.ImageSource;
                 submitScore();                
             }
             
@@ -371,8 +348,8 @@ namespace BopItMYO
         private async void submitScore()
         {
 
-            int halfScore = score / 2;
-            string uri = App.apiURL+"/test/" + App.user + "/" + halfScore;
+            
+            string uri = App.apiURL+"/test/" + App.user + "/" + score;
             WebRequest wrGETURL = WebRequest.Create(uri);
             wrGETURL.Proxy = null;
 
@@ -402,6 +379,27 @@ namespace BopItMYO
 
         }
 
+        private void Buttons()
+        {
 
+        }
+
+        private void btnFingers_Click(object sender, RoutedEventArgs e)
+        {
+            if (expGetures.Text == "FingersSpread")
+            {
+                score++;
+                randomGesture();
+
+            }
+            else
+            {
+                lives--;
+                wrongImage();
+                  
+            }
+        }
+
+       
     }
 }

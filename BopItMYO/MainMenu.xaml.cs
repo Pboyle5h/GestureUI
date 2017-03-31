@@ -27,23 +27,24 @@ namespace BopItMYO
             this.InitializeComponent();
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void Nickname_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(Nickname), null);
         }
 
-        private void button3_Click(object sender, RoutedEventArgs e)
+        private void StartGame_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
-        }
-
-        private void easyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (App.user==" ")
+            if (App.user == " ")
             {
                 this.Frame.Navigate(typeof(Nickname), null);
-            }else
-            this.Frame.Navigate(typeof(MainPage), null);
+            }
+            else
+                this.Frame.Navigate(typeof(MainPage), null);
+        }
+
+        private void LeaderbordIMG_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Leaderboard), null);
         }
     }
 }
